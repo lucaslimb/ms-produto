@@ -50,6 +50,7 @@ public class ProdutoService {
         try{
             Produto entity = repository.getReferenceById(id);
             toEntity(requestDTO, entity);
+            entity = repository.save(entity);
             return new ProdutoResponseDTO(entity);
         } catch (EntityNotFoundException ex){
             throw new EntityNotFoundException("Recurso não encontrado. Id: " + id);
